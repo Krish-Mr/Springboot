@@ -15,6 +15,7 @@ import com.common.utilities.ConfigReader;
 import com.project.properties.ProjectPaths;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Configuration
 @Import(ConfigReader.class)
@@ -61,5 +62,9 @@ public class SQLConfiguration {
 	@Bean
 	public JdbcTemplate getJdbcTemplate(DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
+	}
+	
+	@PreDestroy
+	public void cleanResource() {
 	}
 }

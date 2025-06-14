@@ -1,6 +1,5 @@
 package com.bookmaster;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -8,9 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
-import com.bookmaster.rest.template.MicroService1WebClient;
 
 @SpringBootApplication
 //@Configuration
@@ -18,8 +14,8 @@ import com.bookmaster.rest.template.MicroService1WebClient;
 //@ComponentScan
 public class Demo {
 	public static void main(String[] args) throws IOException {
-		
-//		ConfigurableApplicationContext run = SpringApplication.run(Demo.class, args);
+
+		ConfigurableApplicationContext run = SpringApplication.run(Demo.class, args);
 //		DatabaseOperation bean = run.getBean(DatabaseOperation.class);
 //		List<String> informationSchemas = bean.getInformationSchemas("BookDetails", "COLUMN_NAME");
 //		System.out.println(informationSchemas);

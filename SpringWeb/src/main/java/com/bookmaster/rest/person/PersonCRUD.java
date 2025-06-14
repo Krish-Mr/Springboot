@@ -1,11 +1,12 @@
 package com.bookmaster.rest.person;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,17 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookmaster.person.Person;
 
 @RestController
+@Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class PersonCRUD {
 
 	AtomicInteger id = new AtomicInteger();
 	ConcurrentHashMap<Integer, Person> p = new ConcurrentHashMap<Integer, Person>();
-	
-	@RequestMapping(value = "/details", produces = MediaType.TEXT_HTML_VALUE)
+
+	@RequestMapping(produces = MediaType.TEXT_HTML_VALUE)
 	private String pathDetails() {
 		
-		return "<p> <a href=\"./\"> Request Mapping - Root path  </a> </p>\r\n"
-				+ "<p> <a href=\"./{id}\">  Get Method - return id person details</a> </p>\r\n"
-				+ "<p> <a href=\"../\">  Get Method - return all the person details</a> </p>\r\n"
+		return "<p> <a href=\"./all\"> Get Method - return all the person details </a> </p>\r\n"
+				+ "<p> <a href=\"./1\">  Get Method - return id person details</a> </p>\r\n"
 				+ "<p> <a href=\"./add\">  Post Method - to add a person</a> </p>\r\n"
 				+ "<p> <a href=\"./{id}\"> Put method - Path variable to update a person</a></p>\r\n"
 				+ "<p> <a href=\"./{id}\">  Delete method - Path varable to delete a person</a> </p>";
@@ -42,7 +43,7 @@ public class PersonCRUD {
 		return p.get(id);
 	}
 	
-	@GetMapping
+	@GetMapping("/all")
 	private Collection<Person> getAllPerson() {
 		return p.values();
 	}
