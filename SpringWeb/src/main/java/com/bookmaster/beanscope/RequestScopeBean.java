@@ -12,20 +12,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 @RestController
 @RequestMapping("request")
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
 public class RequestScopeBean {
 	public static AtomicReference<List<RequestScopeBean>> raObj = new AtomicReference<>();
-
+	
+	
 	public RequestScopeBean() {
 		System.err.println("________________________________________________");
 		System.err.println("Request Bean is Created..." + this.hashCode());
 		System.err.println("________________________________________________");
-		
+
 		List<RequestScopeBean> ifNotPresent = Optional.ofNullable(raObj.get()).orElseGet(ArrayList::new);
 		raObj.set(ifNotPresent);
 		raObj.get().add(this);
+	}
+	
+	@PostConstruct
+	public void postConstructor() {
+		System.out.println("\nPost Constructor Called - Request Scope Bean");
+	}
+
+	@PreDestroy
+	public void preDestory() {
+		System.out.println("Pre Destroy Called - Request Scope Bean");
 	}
 	
 	@GetMapping("")

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 @RestController
 @RequestMapping("/prototype")
 @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -35,5 +38,14 @@ public class PrototypeScopeBean {
 			+ "<br/>List out all created objects: <br/>"
 			+ paObj.get().stream().map(e-> String.valueOf(e.hashCode())).collect(Collectors.joining("<br/>"));
 	}
-	
+
+	@PostConstruct
+	public void postConstruct() {
+		System.out.println("\nPost Constructor Called - Prototype Scope Bean");
+	}
+
+	@PreDestroy
+	public void preDestroy() {
+		System.out.println("\nPre Destroy Called - Prototype Scope Bean");
+	}
 }

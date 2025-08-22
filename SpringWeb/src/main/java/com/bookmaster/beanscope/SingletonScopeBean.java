@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 @RestController(value = "SingletonBean")
 @RequestMapping("/singleton")
 @Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON)
@@ -21,6 +24,16 @@ public class SingletonScopeBean {
 		System.err.println("________________________________________________");
 		System.err.println("Singleton Scope Bean Created..."+ this.hashCode());
 		System.err.println("________________________________________________");
+	}
+	
+	@PostConstruct
+	public void postConstruct() {
+		System.out.println("\nPost Constructor Called - Singleton Scope Bean");
+	}
+	
+	@PreDestroy
+	public void preDestroy() {
+		System.out.println("\nPre Destroy Called - Singleton Scope Bean");
 	}
 	
 	@GetMapping("/this")
