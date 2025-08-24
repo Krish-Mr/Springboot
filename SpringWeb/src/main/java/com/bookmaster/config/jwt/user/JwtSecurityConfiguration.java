@@ -18,17 +18,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.parameters.Parameter;
-import io.swagger.v3.oas.models.security.SecurityRequirement;
-import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @Configuration
 public class JwtSecurityConfiguration {
 
-	
+
 	@Bean
 	public AuthenticationManager authenticationManager(
 			@Qualifier("inMemoryUserDetailsService") UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {

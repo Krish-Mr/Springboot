@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/bean")
-public class ObjectProviderClass {
+public class BeanScopeCreationClass {
 	/**
 	 * refresh the page to see the bean behaviour of scope
 	 */
-	
 	@Autowired
 	ObjectProvider<PrototypeScopeBean> prototypeObj;
 	@Autowired
@@ -33,7 +32,7 @@ public class ObjectProviderClass {
 		System.err.println(s);
 		return s;
 	}
-	
+
 	@GetMapping("singleton")
 	public String getNewObjectForSingleton() {
 		SingletonScopeBean s1 = singltypeObj.getObject();

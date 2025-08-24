@@ -28,12 +28,12 @@ public class SingletonScopeBean {
 	
 	@PostConstruct
 	public void postConstruct() {
-		System.out.println("\nPost Constructor Called - Singleton Scope Bean");
+		System.err.println("\nPost Constructor Called - Singleton Scope Bean");
 	}
 	
 	@PreDestroy
 	public void preDestroy() {
-		System.out.println("\nPre Destroy Called - Singleton Scope Bean");
+		System.err.println("\nPre Destroy Called - Singleton Scope Bean");
 	}
 	
 	@GetMapping("/this")

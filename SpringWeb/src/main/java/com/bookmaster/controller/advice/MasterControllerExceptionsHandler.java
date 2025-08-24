@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class MasterControllerExceptionsHandler {
-	
+
 	@ExceptionHandler(NotFoundException.class)
 	@ResponseBody
 	public ResponseEntity<HashMap> customStatusCodeWithMsg(HttpStatus status, String errmsg, NotFoundException e) {

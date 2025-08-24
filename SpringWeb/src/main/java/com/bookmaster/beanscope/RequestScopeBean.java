@@ -34,12 +34,12 @@ public class RequestScopeBean {
 	
 	@PostConstruct
 	public void postConstructor() {
-		System.out.println("\nPost Constructor Called - Request Scope Bean");
+		System.err.println("\nPost Constructor Called - Request Scope Bean");
 	}
 
 	@PreDestroy
 	public void preDestory() {
-		System.out.println("Pre Destroy Called - Request Scope Bean");
+		System.err.println("Pre Destroy Called - Request Scope Bean");
 	}
 	
 	@GetMapping("")
