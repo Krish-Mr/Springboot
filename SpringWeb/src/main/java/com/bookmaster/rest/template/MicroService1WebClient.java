@@ -1,5 +1,6 @@
 package com.bookmaster.rest.template;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.Builder;
 import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
+import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -35,11 +38,20 @@ public class MicroService1WebClient {
 	
 	public void monoFlux() {
 		System.out.println("callMicroService invoked");
-		WebClient create = WebClient.create("http://localhost:8081/");
+		WebClient webReq = WebClient.create("http://localhost:8081/");
 		Mono<ResponseEntity<String>> entity = WebClient.builder().build().get().uri("/").retrieve().toEntity(String.class);
-		System.out.println(entity);		create.put();
-
-		create.delete();
+		System.out.println(entity);		
+		
+		
+		ResponseSpec responseSpec = webReq.post().body(null).header(null, null).accept(MediaType.APPLICATION_JSON).retrieve();
+			Mono<ResponseEntity<String>> toEntity = responseSpec.toEntity(String.class);
+			
+			Mono<String> bodyToMono = responseSpec.bodyToMono(String.class);
+			Flux<String> bodyToFlux = responseSpec.bodyToFlux(String.class);
+				bodyToFlux.blockFirst();
+		webReq.get();
+		webReq.put();
+		webReq.delete();
 		
 	};
 }

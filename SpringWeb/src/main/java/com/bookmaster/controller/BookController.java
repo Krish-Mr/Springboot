@@ -3,7 +3,6 @@ package com.bookmaster.controller;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,7 @@ public class BookController {
 	 * inject the bean without using @Autowired by using @Configuration in <class>BookConfiguration.class</class>
 	 */
 	BookService bookServ;
-	
+
 	public BookController(BookService bookSerive) {
 		bookServ = bookSerive;
 	}

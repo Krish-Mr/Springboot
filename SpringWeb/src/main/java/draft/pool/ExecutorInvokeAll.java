@@ -41,7 +41,8 @@ public class ExecutorInvokeAll {
 	}
 
 	public static void executorService() {
-		try(ExecutorService ex = Executors.newFixedThreadPool(4)) {
+		ExecutorService ex = Executors.newFixedThreadPool(4);
+		try {
 			List<Callable<Integer>> callableList = Arrays.asList(c1,c2,c3,c4);
 			System.out.println("InvokeAll");
 			List<Future<Integer>> resultList = ex.invokeAll(callableList);

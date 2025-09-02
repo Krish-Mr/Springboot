@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.function.Function;
 
-import org.springframework.boot.web.embedded.jetty.ConfigurableJettyWebServerFactory;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;

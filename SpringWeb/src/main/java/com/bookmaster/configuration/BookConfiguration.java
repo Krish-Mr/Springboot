@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.bookmaster.controller.BookController;
-import com.bookmaster.repository.dao.BookRepo;
 import com.bookmaster.service.BookService;
 
 @Configuration

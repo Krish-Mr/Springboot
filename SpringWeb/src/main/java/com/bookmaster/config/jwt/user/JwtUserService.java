@@ -11,8 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import io.swagger.v3.oas.models.examples.Example;
-
 @Service
 public class JwtUserService implements UserDetailsService {
 
@@ -23,7 +21,7 @@ public class JwtUserService implements UserDetailsService {
 //		userRepo.findAll().stream().filter(e->e.getUserId().equals(userId)).findFirst();
 		return userRepo.findByUserId(userId).orElseThrow( ()-> new Exception("user id is not found. login failed"));
 	}
-	
+
 	public JwtUserDetails storeUser(JwtUserDetails user){
 		System.out.println("Saving User Details: "+user.toString());
 		return userRepo.saveAndFlush(user);

@@ -3,8 +3,6 @@ package com.bookmaster.repository.model;
 
 import java.sql.Date;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

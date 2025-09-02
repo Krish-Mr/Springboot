@@ -44,15 +44,15 @@ public class JwtSecurityConfiguration {
 	@Primary
 	public UserDetailsService inMemoryUserDetailsService() {
 		UserDetailsService usrDetailsServ = new InMemoryUserDetailsManager();
-		((InMemoryUserDetailsManager) usrDetailsServ).createUser(User.withUsername("admin1").password("admin@123").roles("admin").build());
+		((InMemoryUserDetailsManager) usrDetailsServ).createUser(User.withUsername("admin").password("admin").roles("admin").build());
 		return usrDetailsServ;
 	}
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http.csrf(c->c.disable())
-//			.httpBasic(Customizer.withDefaults())
-			.formLogin(Customizer.withDefaults())
+			.httpBasic(Customizer.withDefaults())
+//			.formLogin(Customizer.withDefaults())
 //			.rememberMe(Customizer.withDefaults())
 //			.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
 //			.authorizeHttpRequests(auth->auth.requestMatchers("jwt-user/**").authenticated())

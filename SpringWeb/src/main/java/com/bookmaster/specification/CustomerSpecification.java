@@ -14,7 +14,6 @@ public class CustomerSpecification implements Specification<CustomerDetails> {
 	@Override
 	public Predicate toPredicate(Root<CustomerDetails> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 		Predicate like = criteriaBuilder.like(root.get(CustomerDetails.class.getName()), "%"+ "a" +"%");
-		
 		return null;
 	}
 
