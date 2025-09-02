@@ -1,0 +1,45 @@
+✅ Java 8 Key Features & Concepts
+🔹 1. Future and Callable Interface
+Used for asynchronous programming.
+Callable returns a result and can throw exceptions.
+Future represents the result of an asynchronous computation.
+🔹 2. Optional Class
+Helps avoid NullPointerException.
+Provides methods like isPresent(), orElse(), ifPresent() to handle null values gracefully.
+🔹 3. Default and Static Methods in Interfaces
+Interfaces can now have method implementations using default and static keywords.
+Useful for backward compatibility and utility methods.
+🔹 4. Stream API
+Enables functional-style operations on collections.
+Supports operations like filter, map, reduce, collect, etc.
+🔹 5. Method Reference (::)
+A shorthand for calling methods using a reference.
+Example: String::toUpperCase, System.out::println.
+🔹 6. Lambda Expressions
+Provides a concise way to represent functional interfaces.
+Syntax: (parameters) -> expression or (parameters) -> { statements }.
+🔹 7. @FunctionalInterface and Built-in Interfaces
+Annotation to indicate an interface is intended to be functional.
+Common functional interfaces:
+Supplier<T> – returns a value.
+Consumer<T> – takes a value and returns nothing.
+Predicate<T> – returns a boolean.
+Function<T, R> – takes a value and returns another.
+🔹 8. LocalDate and LocalDateTime
+Part of the new Date-Time API.
+Easier to perform operations like add, subtract, and compare dates.
+Immutable and thread-safe.
+
+
+
+
+✅ Java 17 Features (LTS Release)
+🔹 Language Enhancements
+Sealed Classes and Interfaces (JEP 409)
+
+Restrict which classes can extend or implement a class/interface.
+Improves control over inheritance and enhances pattern matching.
+Pattern Matching for switch (Preview) (JEP 406)
+
+Enables more expressive and concise switch statements using patterns.
+Supports type checks and guards directly in case labels.
