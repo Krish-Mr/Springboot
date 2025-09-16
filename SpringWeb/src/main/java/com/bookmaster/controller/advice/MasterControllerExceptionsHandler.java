@@ -2,7 +2,7 @@ package com.bookmaster.controller.advice;
 
 import java.util.HashMap;
 
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import com.bookmaster.exception.ErrorFromServer.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

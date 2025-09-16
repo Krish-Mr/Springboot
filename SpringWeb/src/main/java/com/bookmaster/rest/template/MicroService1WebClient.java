@@ -45,6 +45,7 @@ public class MicroService1WebClient {
 		
 		ResponseSpec responseSpec = webReq.post().body(null).header(null, null).accept(MediaType.APPLICATION_JSON).retrieve();
 			Mono<ResponseEntity<String>> toEntity = responseSpec.toEntity(String.class);
+			toEntity.subscribe();
 			
 			Mono<String> bodyToMono = responseSpec.bodyToMono(String.class);
 			Flux<String> bodyToFlux = responseSpec.bodyToFlux(String.class);
@@ -54,4 +55,15 @@ public class MicroService1WebClient {
 		webReq.delete();
 		
 	};
+	
+	public static void main(String[] args) {
+		Flux<Integer> fluxStr = Flux.range(0, 10).map(e->{
+			if(e>5 && e<7)
+				throw new RuntimeException("Number exceeds 5 and less than 7, so number is 6");
+			return e;
+		});
+		fluxStr.filter(i-> i<5).subscribe(i-> System.out.println(i) );
+		fluxStr.filter(i-> i>2).subscribe(i->System.out.println(i), ex-> System.out.println(ex.getMessage()));
+		fluxStr.filter(i-> i<3).subscribe(System.out::println, ex-> System.out.println(ex.getMessage()), ()-> System.out.println("Done..."));
+	}
 }

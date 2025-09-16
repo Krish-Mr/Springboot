@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -55,8 +56,8 @@ public class JwtSecurityConfiguration {
 //			.formLogin(Customizer.withDefaults())
 //			.rememberMe(Customizer.withDefaults())
 //			.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-//			.authorizeHttpRequests(auth->auth.requestMatchers("jwt-user/**").authenticated())
-//			.authorizeHttpRequests(auth->auth.requestMatchers("/**").permitAll())
+			.authorizeHttpRequests(auth->auth.requestMatchers("jwt-user/**").authenticated())
+			.authorizeHttpRequests(auth->auth.requestMatchers("/**").permitAll())
 			.build();
 	}
 

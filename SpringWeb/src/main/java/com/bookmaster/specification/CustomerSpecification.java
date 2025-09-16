@@ -16,5 +16,4 @@ public class CustomerSpecification implements Specification<CustomerDetails> {
 		Predicate like = criteriaBuilder.like(root.get(CustomerDetails.class.getName()), "%"+ "a" +"%");
 		return null;
 	}
-
 }

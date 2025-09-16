@@ -50,7 +50,7 @@ public class TransactionDetails {
 
     @Column(name = "remarks", length = 100)
     private String remarks;
-
+    
 	public int getSid() {
 		return sid;
 	}

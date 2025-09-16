@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ErrorFromServer {
 
     // Custom Exception
-    static class NotFoundException extends Exception {
+    public static class NotFoundException extends Exception {
         public NotFoundException(String msg) {
             super(msg);
         }

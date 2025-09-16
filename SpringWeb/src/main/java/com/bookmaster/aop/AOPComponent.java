@@ -20,6 +20,7 @@ public class AOPComponent {
 
     @Before("pointcut()")
     public void beforeAdvice(JoinPoint joinPoint) {
+    	joinPoint.getArgs();
         System.out.println("Before Method: " + joinPoint.getSignature().getName());
     }
 

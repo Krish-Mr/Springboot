@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfig
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
 @SpringBootApplication(scanBasePackages = "com.bookmaster.aop",exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class})
@@ -21,9 +22,10 @@ public class Demo {
 	public static void main(String[] args) throws IOException {
 
 		ConfigurableApplicationContext run = SpringApplication.run(Demo.class, args);
-//		DatabaseOperation bean = run.getBean(DatabaseOperation.class);
-//		List<String> informationSchemas = bean.getInformationSchemas("BookDetails", "COLUMN_NAME");
-//		System.out.println(informationSchemas);
+		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
+		for(String beanDef  : annotationConfigApplicationContext.getBeanDefinitionNames()) {
+			System.out.println(beanDef);
+		}
 		/**
 		 * use this for find the deployed path jar | war
 		 */

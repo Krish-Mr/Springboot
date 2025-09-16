@@ -7,5 +7,4 @@ import com.bookmaster.repository.model.BookDetails;
 
 @Repository
 public interface BookRepo extends JpaRepository<BookDetails, Integer>{
-	
 }
